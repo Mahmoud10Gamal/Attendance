@@ -10,7 +10,7 @@ namespace Attendance.Model
     {
         public int ClassId { get; set; }
         public string Name { get; set; } = null!;
-        public string Year { get; set; } = null!;
+        public int Year { get; set; } 
         public int? TeacherId { get; set; }
 
         public Teacher? Teacher { get; set; }
