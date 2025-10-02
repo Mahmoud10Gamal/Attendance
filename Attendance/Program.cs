@@ -16,7 +16,7 @@ namespace Attendance
 
             //try
             //{
-            //    SeedData.Initialize();
+            //SeedData.Initialize();
             //}
             //catch (Exception ex)
             //{
