@@ -1,14 +1,15 @@
+using Attendance.DataAcess;
+using Attendance.Model;
+using Attendance.Registeration_Forms;
 using System;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using Attendance.DataAcess;
-using Attendance.Model;
 
 namespace Attendance
 {
-    public partial class Form1 : Form
+    public partial class login : Form
     {
         // Color constants for modern design
         private readonly Color primaryColor = Color.FromArgb(41, 128, 185);
@@ -17,7 +18,7 @@ namespace Attendance
         private readonly Color errorColor = Color.Crimson;
         private readonly Color successColor = Color.FromArgb(39, 174, 96);
 
-        public Form1()
+        public login()
         {
             InitializeComponent();
             InitializeLogoPlaceholder();
@@ -192,21 +193,20 @@ namespace Attendance
 
         private void OpenRoleSpecificForm(string role, int userId, string email)
         {
+            Form dashboard = null;
+
             switch (role)
             {
                 case "Admin":
-                    MessageBox.Show($"Admin login successful!\nEmail: {email}", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dashboard = new AdminDashboard(userId, email);
                     break;
 
                 case "Teacher":
-                    MessageBox.Show($"Teacher login successful!\nEmail: {email}", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dashboard = new TeacherDashboard(userId, email);
                     break;
 
                 case "Student":
-                    MessageBox.Show($"Student login successful!\nEmail: {email}", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dashboard = new StudentDashboard(userId, email);
                     break;
 
                 default:
@@ -214,7 +214,18 @@ namespace Attendance
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
             }
+
+            if (dashboard != null)
+            {
+                this.Hide();  
+
+                dashboard.ShowDialog(); 
+
+                this.Show();  
+
+            }
         }
+
 
         private void LogAuditEntry(int userId, string action, string entity, int entityId)
         {
@@ -254,5 +265,11 @@ namespace Attendance
             passwordSalt = hmac.Key;
             passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
         }
+        private void lblRegister_Click(object sender, EventArgs e)
+        {
+            Register registerForm = new Register();
+            registerForm.ShowDialog(); 
+        }
+
     }
 }

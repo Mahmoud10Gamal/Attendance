@@ -22,7 +22,7 @@ namespace Attendance
             //{
             //    MessageBox.Show("Database seeding failed: " + ex.Message);
             //}
-            Application.Run(new Form1());
+            Application.Run(new login());
         }
     }
 }

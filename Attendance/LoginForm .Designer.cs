@@ -1,6 +1,7 @@
-﻿namespace Attendance
+﻿
+namespace Attendance
 {
-    partial class Form1
+    partial class login
     {
         /// <summary>
         /// Required designer variable.
@@ -28,239 +29,254 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.panelLogin = new System.Windows.Forms.Panel();
-            this.chkShowPassword = new System.Windows.Forms.CheckBox();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.chkRememberMe = new System.Windows.Forms.CheckBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.panelPasswordUnderline = new System.Windows.Forms.Panel();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.panelEmailUnderline = new System.Windows.Forms.Panel();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblSubtitle = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
-            this.panelMain.SuspendLayout();
-            this.panelLogin.SuspendLayout();
-            this.panelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
-            this.SuspendLayout();
+            panelMain = new Panel();
+            panelLogin = new Panel();
+            chkShowPassword = new CheckBox();
+            lblMessage = new Label();
+            chkRememberMe = new CheckBox();
+            btnLogin = new Button();
+            panelPasswordUnderline = new Panel();
+            txtPassword = new TextBox();
+            lblPassword = new Label();
+            panelEmailUnderline = new Panel();
+            txtEmail = new TextBox();
+            lblEmail = new Label();
+            lblRegister = new Label();
+            panelHeader = new Panel();
+            lblSubtitle = new Label();
+            lblTitle = new Label();
+            picLogo = new PictureBox();
+            panelMain.SuspendLayout();
+            panelLogin.SuspendLayout();
+            panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
+            SuspendLayout();
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.White;
-            this.panelMain.Controls.Add(this.panelLogin);
-            this.panelMain.Controls.Add(this.panelHeader);
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(0, 0);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(480, 600);
-            this.panelMain.TabIndex = 0;
+            panelMain.BackColor = Color.White;
+            panelMain.Controls.Add(panelLogin);
+            panelMain.Controls.Add(panelHeader);
+            panelMain.Dock = DockStyle.Fill;
+            panelMain.Location = new Point(0, 0);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(480, 600);
+            panelMain.TabIndex = 0;
             // 
             // panelLogin
             // 
-            this.panelLogin.Controls.Add(this.chkShowPassword);
-            this.panelLogin.Controls.Add(this.lblMessage);
-            this.panelLogin.Controls.Add(this.chkRememberMe);
-            this.panelLogin.Controls.Add(this.btnLogin);
-            this.panelLogin.Controls.Add(this.panelPasswordUnderline);
-            this.panelLogin.Controls.Add(this.txtPassword);
-            this.panelLogin.Controls.Add(this.lblPassword);
-            this.panelLogin.Controls.Add(this.panelEmailUnderline);
-            this.panelLogin.Controls.Add(this.txtEmail);
-            this.panelLogin.Controls.Add(this.lblEmail);
-            this.panelLogin.Location = new System.Drawing.Point(60, 240);
-            this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(360, 340);
-            this.panelLogin.TabIndex = 1;
+            panelLogin.Controls.Add(chkShowPassword);
+            panelLogin.Controls.Add(lblMessage);
+            panelLogin.Controls.Add(chkRememberMe);
+            panelLogin.Controls.Add(btnLogin);
+            panelLogin.Controls.Add(panelPasswordUnderline);
+            panelLogin.Controls.Add(txtPassword);
+            panelLogin.Controls.Add(lblPassword);
+            panelLogin.Controls.Add(panelEmailUnderline);
+            panelLogin.Controls.Add(txtEmail);
+            panelLogin.Controls.Add(lblEmail);
+            panelLogin.Controls.Add(lblRegister);
+            panelLogin.Location = new Point(60, 240);
+            panelLogin.Name = "panelLogin";
+            panelLogin.Size = new Size(360, 340);
+            panelLogin.TabIndex = 1;
             // 
             // chkShowPassword
             // 
-            this.chkShowPassword.AutoSize = true;
-            this.chkShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chkShowPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.chkShowPassword.Location = new System.Drawing.Point(150, 175);
-            this.chkShowPassword.Name = "chkShowPassword";
-            this.chkShowPassword.Size = new System.Drawing.Size(130, 24);
-            this.chkShowPassword.TabIndex = 3;
-            this.chkShowPassword.Text = "Show Password";
-            this.chkShowPassword.UseVisualStyleBackColor = true;
-            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            chkShowPassword.AutoSize = true;
+            chkShowPassword.Font = new Font("Segoe UI", 9F);
+            chkShowPassword.ForeColor = Color.DimGray;
+            chkShowPassword.Location = new Point(150, 175);
+            chkShowPassword.Name = "chkShowPassword";
+            chkShowPassword.Size = new Size(132, 24);
+            chkShowPassword.TabIndex = 3;
+            chkShowPassword.Text = "Show Password";
+            chkShowPassword.UseVisualStyleBackColor = true;
+            chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
             // 
             // lblMessage
             // 
-            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblMessage.ForeColor = System.Drawing.Color.Crimson;
-            this.lblMessage.Location = new System.Drawing.Point(0, 300);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(360, 40);
-            this.lblMessage.TabIndex = 8;
-            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblMessage.Dock = DockStyle.Bottom;
+            lblMessage.Font = new Font("Segoe UI", 9F);
+            lblMessage.ForeColor = Color.Crimson;
+            lblMessage.Location = new Point(0, 300);
+            lblMessage.Name = "lblMessage";
+            lblMessage.Size = new Size(360, 40);
+            lblMessage.TabIndex = 8;
+            lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // chkRememberMe
             // 
-            this.chkRememberMe.AutoSize = true;
-            this.chkRememberMe.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.chkRememberMe.ForeColor = System.Drawing.Color.DimGray;
-            this.chkRememberMe.Location = new System.Drawing.Point(3, 175);
-            this.chkRememberMe.Name = "chkRememberMe";
-            this.chkRememberMe.Size = new System.Drawing.Size(128, 24);
-            this.chkRememberMe.TabIndex = 2;
-            this.chkRememberMe.Text = "Remember Me";
-            this.chkRememberMe.UseVisualStyleBackColor = true;
+            chkRememberMe.AutoSize = true;
+            chkRememberMe.Font = new Font("Segoe UI", 9F);
+            chkRememberMe.ForeColor = Color.DimGray;
+            chkRememberMe.Location = new Point(3, 175);
+            chkRememberMe.Name = "chkRememberMe";
+            chkRememberMe.Size = new Size(129, 24);
+            chkRememberMe.TabIndex = 2;
+            chkRememberMe.Text = "Remember Me";
+            chkRememberMe.UseVisualStyleBackColor = true;
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
-            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogin.FlatAppearance.BorderSize = 0;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(0, 215);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(360, 45);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "LOGIN";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            this.btnLogin.MouseEnter += new System.EventHandler(this.btnLogin_MouseEnter);
-            this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
+            btnLogin.BackColor = Color.FromArgb(41, 128, 185);
+            btnLogin.Cursor = Cursors.Hand;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(0, 215);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(360, 45);
+            btnLogin.TabIndex = 4;
+            btnLogin.Text = "LOGIN";
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            btnLogin.MouseEnter += btnLogin_MouseEnter;
+            btnLogin.MouseLeave += btnLogin_MouseLeave;
             // 
             // panelPasswordUnderline
             // 
-            this.panelPasswordUnderline.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelPasswordUnderline.Location = new System.Drawing.Point(0, 155);
-            this.panelPasswordUnderline.Name = "panelPasswordUnderline";
-            this.panelPasswordUnderline.Size = new System.Drawing.Size(360, 2);
-            this.panelPasswordUnderline.TabIndex = 5;
+            panelPasswordUnderline.BackColor = Color.Gainsboro;
+            panelPasswordUnderline.Location = new Point(0, 155);
+            panelPasswordUnderline.Name = "panelPasswordUnderline";
+            panelPasswordUnderline.Size = new Size(360, 2);
+            panelPasswordUnderline.TabIndex = 5;
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.White;
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtPassword.ForeColor = System.Drawing.Color.DimGray;
-            this.txtPassword.Location = new System.Drawing.Point(0, 125);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(360, 25);
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
-            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
+            txtPassword.BackColor = Color.White;
+            txtPassword.BorderStyle = BorderStyle.None;
+            txtPassword.Font = new Font("Segoe UI", 11F);
+            txtPassword.ForeColor = Color.DimGray;
+            txtPassword.Location = new Point(0, 125);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(360, 25);
+            txtPassword.TabIndex = 1;
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.Enter += txtPassword_Enter;
+            txtPassword.Leave += txtPassword_Leave;
             // 
             // lblPassword
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPassword.ForeColor = System.Drawing.Color.Gray;
-            this.lblPassword.Location = new System.Drawing.Point(0, 100);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(73, 20);
-            this.lblPassword.TabIndex = 3;
-            this.lblPassword.Text = "Password";
+            lblPassword.AutoSize = true;
+            lblPassword.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblPassword.ForeColor = Color.Gray;
+            lblPassword.Location = new Point(0, 100);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(76, 20);
+            lblPassword.TabIndex = 3;
+            lblPassword.Text = "Password";
             // 
             // panelEmailUnderline
             // 
-            this.panelEmailUnderline.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelEmailUnderline.Location = new System.Drawing.Point(0, 75);
-            this.panelEmailUnderline.Name = "panelEmailUnderline";
-            this.panelEmailUnderline.Size = new System.Drawing.Size(360, 2);
-            this.panelEmailUnderline.TabIndex = 2;
+            panelEmailUnderline.BackColor = Color.Gainsboro;
+            panelEmailUnderline.Location = new Point(0, 75);
+            panelEmailUnderline.Name = "panelEmailUnderline";
+            panelEmailUnderline.Size = new Size(360, 2);
+            panelEmailUnderline.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.BackColor = System.Drawing.Color.White;
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtEmail.ForeColor = System.Drawing.Color.DimGray;
-            this.txtEmail.Location = new System.Drawing.Point(0, 45);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(360, 25);
-            this.txtEmail.TabIndex = 0;
-            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
-            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            txtEmail.BackColor = Color.White;
+            txtEmail.BorderStyle = BorderStyle.None;
+            txtEmail.Font = new Font("Segoe UI", 11F);
+            txtEmail.ForeColor = Color.DimGray;
+            txtEmail.Location = new Point(0, 45);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(360, 25);
+            txtEmail.TabIndex = 0;
+            txtEmail.Enter += txtEmail_Enter;
+            txtEmail.Leave += txtEmail_Leave;
             // 
             // lblEmail
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblEmail.ForeColor = System.Drawing.Color.Gray;
-            this.lblEmail.Location = new System.Drawing.Point(0, 20);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(48, 20);
-            this.lblEmail.TabIndex = 0;
-            this.lblEmail.Text = "Email";
+            lblEmail.AutoSize = true;
+            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblEmail.ForeColor = Color.Gray;
+            lblEmail.Location = new Point(0, 20);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(47, 20);
+            lblEmail.TabIndex = 0;
+            lblEmail.Text = "Email";
+            // 
+            // lblRegister
+            // 
+            lblRegister.AutoSize = true;
+            lblRegister.Cursor = Cursors.Hand;
+            lblRegister.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            lblRegister.ForeColor = Color.RoyalBlue;
+            lblRegister.Location = new Point(120, 270);
+            lblRegister.Name = "lblRegister";
+            lblRegister.Size = new Size(119, 20);
+            lblRegister.TabIndex = 5;
+            lblRegister.Text = "Or Register Here";
+            lblRegister.Click += lblRegister_Click;
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
-            this.panelHeader.Controls.Add(this.lblSubtitle);
-            this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Controls.Add(this.picLogo);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(480, 200);
-            this.panelHeader.TabIndex = 0;
+            panelHeader.BackColor = Color.FromArgb(41, 128, 185);
+            panelHeader.Controls.Add(lblSubtitle);
+            panelHeader.Controls.Add(lblTitle);
+            panelHeader.Controls.Add(picLogo);
+            panelHeader.Dock = DockStyle.Top;
+            panelHeader.Location = new Point(0, 0);
+            panelHeader.Name = "panelHeader";
+            panelHeader.Size = new Size(480, 200);
+            panelHeader.TabIndex = 0;
             // 
             // lblSubtitle
             // 
-            this.lblSubtitle.AutoSize = true;
-            this.lblSubtitle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblSubtitle.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSubtitle.Location = new System.Drawing.Point(140, 155);
-            this.lblSubtitle.Name = "lblSubtitle";
-            this.lblSubtitle.Size = new System.Drawing.Size(201, 23);
-            this.lblSubtitle.TabIndex = 2;
-            this.lblSubtitle.Text = "Sign in to your account";
+            lblSubtitle.AutoSize = true;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.WhiteSmoke;
+            lblSubtitle.Location = new Point(140, 155);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(188, 23);
+            lblSubtitle.TabIndex = 2;
+            lblSubtitle.Text = "Sign in to your account";
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(85, 110);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(310, 41);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Attendance System";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Location = new Point(85, 110);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(287, 41);
+            lblTitle.TabIndex = 1;
+            lblTitle.Text = "Attendance System";
             // 
             // picLogo
             // 
-            this.picLogo.BackColor = System.Drawing.Color.White;
-            this.picLogo.Location = new System.Drawing.Point(200, 30);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(80, 80);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
+            picLogo.BackColor = Color.White;
+            picLogo.Location = new Point(200, 30);
+            picLogo.Name = "picLogo";
+            picLogo.Size = new Size(80, 80);
+            picLogo.SizeMode = PictureBoxSizeMode.CenterImage;
+            picLogo.TabIndex = 0;
+            picLogo.TabStop = false;
             // 
-            // Form1
+            // login
             // 
-            this.AcceptButton = this.btnLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 600);
-            this.Controls.Add(this.panelMain);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Attendance System - Login";
-            this.panelMain.ResumeLayout(false);
-            this.panelLogin.ResumeLayout(false);
-            this.panelLogin.PerformLayout();
-            this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            this.ResumeLayout(false);
+            AcceptButton = btnLogin;
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(480, 600);
+            Controls.Add(panelMain);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "login";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Attendance System - Login";
+            panelMain.ResumeLayout(false);
+            panelLogin.ResumeLayout(false);
+            panelLogin.PerformLayout();
+            panelHeader.ResumeLayout(false);
+            panelHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
+            ResumeLayout(false);
 
         }
 
@@ -282,5 +298,6 @@
         private System.Windows.Forms.CheckBox chkRememberMe;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.CheckBox chkShowPassword;
+        private Label lblRegister;
     }
 }

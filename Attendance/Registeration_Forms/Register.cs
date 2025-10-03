@@ -1,56 +1,48 @@
 ﻿using Attendance.DataAcess;
 using Attendance.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attendance.Registeration_Forms
 {
     public partial class Register : Form
     {
-        private Form Form1;
+        private readonly Color errorColor = Color.Crimson;
+        private readonly Color successColor = Color.FromArgb(39, 174, 96);
 
         public Register()
         {
             InitializeComponent();
-           
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void register_New_User(object sender, EventArgs e)
         {
-            string username = TBRegUN.Text.Trim();
-            string password = TBRegPas.Text;
+            lblMessage.Text = "";
+
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text;
             UserRole role;
 
-            if (RBTeacher.Checked)
+            if (rbTeacher.Checked)
                 role = UserRole.Teacher;
-            else if (RBStudent.Checked)
+            else if (rbStudent.Checked)
                 role = UserRole.Student;
             else
             {
-                MessageBox.Show("Please select a role (Teacher or Student).");
+                ShowMessage("Please select a role.", errorColor);
                 return;
             }
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Username and password are required.");
+                ShowMessage("Username and password are required.", errorColor);
                 return;
             }
 
-            // Hash password
+
             using var hmac = new HMACSHA512();
             byte[] passwordSalt = hmac.Key;
             byte[] passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
@@ -61,7 +53,8 @@ namespace Attendance.Registeration_Forms
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 FullName = username,
-                Email = "",
+                Email = "", 
+
                 Role = role,
                 IsActive = true,
                 CreatedAt = DateTime.Now
@@ -71,13 +64,30 @@ namespace Attendance.Registeration_Forms
             {
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                ShowMessage("User registered successfully.", successColor);
+
+                System.Threading.Thread.Sleep(500);
+
+
+                Form dashboard = null;
+
+                if (role == UserRole.Teacher)
+                    dashboard = new TeacherDashboard(user.UserId, user.Email);
+                else if (role == UserRole.Student)
+                    dashboard = new StudentDashboard(user.UserId, user.Email);
+
+                this.Hide();
+                dashboard.ShowDialog();
+                this.Close(); 
+
             }
-
-            MessageBox.Show("User registered successfully.");
-
-            this.Close();            // close Register form
-            Form1.Show();       // show the previous form again (e.g. Login)
         }
 
+        private void ShowMessage(string message, Color color)
+        {
+            lblMessage.Text = message;
+            lblMessage.ForeColor = color;
+        }
     }
 }
