@@ -2,8 +2,15 @@
 {
     partial class Form1
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -15,19 +22,24 @@
 
         #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.lblMessage = new System.Windows.Forms.Label();
             this.chkRememberMe = new System.Windows.Forms.CheckBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panelPasswordUnderline = new System.Windows.Forms.Panel();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.panelUsernameUnderline = new System.Windows.Forms.Panel();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
+            this.panelEmailUnderline = new System.Windows.Forms.Panel();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblSubtitle = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -51,26 +63,40 @@
             // 
             // panelLogin
             // 
+            this.panelLogin.Controls.Add(this.chkShowPassword);
             this.panelLogin.Controls.Add(this.lblMessage);
             this.panelLogin.Controls.Add(this.chkRememberMe);
             this.panelLogin.Controls.Add(this.btnLogin);
             this.panelLogin.Controls.Add(this.panelPasswordUnderline);
             this.panelLogin.Controls.Add(this.txtPassword);
             this.panelLogin.Controls.Add(this.lblPassword);
-            this.panelLogin.Controls.Add(this.panelUsernameUnderline);
-            this.panelLogin.Controls.Add(this.txtUsername);
-            this.panelLogin.Controls.Add(this.lblUsername);
+            this.panelLogin.Controls.Add(this.panelEmailUnderline);
+            this.panelLogin.Controls.Add(this.txtEmail);
+            this.panelLogin.Controls.Add(this.lblEmail);
             this.panelLogin.Location = new System.Drawing.Point(60, 240);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(360, 320);
+            this.panelLogin.Size = new System.Drawing.Size(360, 340);
             this.panelLogin.TabIndex = 1;
+            // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.AutoSize = true;
+            this.chkShowPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.chkShowPassword.ForeColor = System.Drawing.Color.DimGray;
+            this.chkShowPassword.Location = new System.Drawing.Point(150, 175);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(130, 24);
+            this.chkShowPassword.TabIndex = 3;
+            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.UseVisualStyleBackColor = true;
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
             // 
             // lblMessage
             // 
             this.lblMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblMessage.ForeColor = System.Drawing.Color.Crimson;
-            this.lblMessage.Location = new System.Drawing.Point(0, 280);
+            this.lblMessage.Location = new System.Drawing.Point(0, 300);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(360, 40);
             this.lblMessage.TabIndex = 8;
@@ -84,7 +110,7 @@
             this.chkRememberMe.Location = new System.Drawing.Point(3, 175);
             this.chkRememberMe.Name = "chkRememberMe";
             this.chkRememberMe.Size = new System.Drawing.Size(128, 24);
-            this.chkRememberMe.TabIndex = 3;
+            this.chkRememberMe.TabIndex = 2;
             this.chkRememberMe.Text = "Remember Me";
             this.chkRememberMe.UseVisualStyleBackColor = true;
             // 
@@ -123,7 +149,7 @@
             this.txtPassword.Location = new System.Drawing.Point(0, 125);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(360, 25);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
             this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
@@ -139,37 +165,37 @@
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password";
             // 
-            // panelUsernameUnderline
+            // panelEmailUnderline
             // 
-            this.panelUsernameUnderline.BackColor = System.Drawing.Color.Gainsboro;
-            this.panelUsernameUnderline.Location = new System.Drawing.Point(0, 75);
-            this.panelUsernameUnderline.Name = "panelUsernameUnderline";
-            this.panelUsernameUnderline.Size = new System.Drawing.Size(360, 2);
-            this.panelUsernameUnderline.TabIndex = 2;
+            this.panelEmailUnderline.BackColor = System.Drawing.Color.Gainsboro;
+            this.panelEmailUnderline.Location = new System.Drawing.Point(0, 75);
+            this.panelEmailUnderline.Name = "panelEmailUnderline";
+            this.panelEmailUnderline.Size = new System.Drawing.Size(360, 2);
+            this.panelEmailUnderline.TabIndex = 2;
             // 
-            // txtUsername
+            // txtEmail
             // 
-            this.txtUsername.BackColor = System.Drawing.Color.White;
-            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtUsername.ForeColor = System.Drawing.Color.DimGray;
-            this.txtUsername.Location = new System.Drawing.Point(0, 45);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(360, 25);
-            this.txtUsername.TabIndex = 1;
-            this.txtUsername.Enter += new System.EventHandler(this.txtUsername_Enter);
-            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
+            this.txtEmail.BackColor = System.Drawing.Color.White;
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtEmail.ForeColor = System.Drawing.Color.DimGray;
+            this.txtEmail.Location = new System.Drawing.Point(0, 45);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(360, 25);
+            this.txtEmail.TabIndex = 0;
+            this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
-            // lblUsername
+            // lblEmail
             // 
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUsername.ForeColor = System.Drawing.Color.Gray;
-            this.lblUsername.Location = new System.Drawing.Point(0, 20);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(79, 20);
-            this.lblUsername.TabIndex = 0;
-            this.lblUsername.Text = "Username";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblEmail.ForeColor = System.Drawing.Color.Gray;
+            this.lblEmail.Location = new System.Drawing.Point(0, 20);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(48, 20);
+            this.lblEmail.TabIndex = 0;
+            this.lblEmail.Text = "Email";
             // 
             // panelHeader
             // 
@@ -235,6 +261,7 @@
             this.panelHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -245,14 +272,15 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblSubtitle;
         private System.Windows.Forms.Panel panelLogin;
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Panel panelUsernameUnderline;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Panel panelEmailUnderline;
         private System.Windows.Forms.Panel panelPasswordUnderline;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.CheckBox chkRememberMe;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.CheckBox chkShowPassword;
     }
 }

@@ -1,7 +1,10 @@
-using Attendance.DataAcess;
-using Attendance.Model;
+using System;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
+using Attendance.DataAcess;
+using Attendance.Model;
 
 namespace Attendance
 {
@@ -42,13 +45,13 @@ namespace Attendance
         {
             lblMessage.Text = "";
 
-            string username = txtUsername.Text.Trim();
+            string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
 
-            if (string.IsNullOrWhiteSpace(username))
+            if (string.IsNullOrWhiteSpace(email))
             {
-                ShowMessage("Please enter username", errorColor);
-                txtUsername.Focus();
+                ShowMessage("Please enter email", errorColor);
+                txtEmail.Focus();
                 return;
             }
 
@@ -59,26 +62,33 @@ namespace Attendance
                 return;
             }
 
+            if (!IsValidEmail(email))
+            {
+                ShowMessage("Please enter a valid email address", errorColor);
+                txtEmail.Focus();
+                return;
+            }
+
             btnLogin.Enabled = false;
             btnLogin.Text = "Authenticating...";
             Cursor = Cursors.WaitCursor;
 
             try
             {
-                if (AuthenticateUser(username, password, out string role, out int userId))
+                if (AuthenticateUser(email, password, out string role, out int userId))
                 {
                     ShowMessage("Login successful!", successColor);
 
                     LogAuditEntry(userId, "Login", "Users", userId);
 
                     System.Threading.Thread.Sleep(500);
-                    OpenRoleSpecificForm(role, userId, username);
+                    OpenRoleSpecificForm(role, userId, email);
 
                     this.Hide();
                 }
                 else
                 {
-                    ShowMessage("Invalid username or password!", errorColor);
+                    ShowMessage("Invalid email or password!", errorColor);
                     txtPassword.Clear();
                     txtPassword.Focus();
                 }
@@ -94,15 +104,29 @@ namespace Attendance
                 Cursor = Cursors.Default;
             }
         }
-        // Highlight underline when Username textbox gets focus
-        private void txtUsername_Enter(object sender, EventArgs e)
+
+        private bool IsValidEmail(string email)
         {
-            panelUsernameUnderline.BackColor = focusColor;
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        private void txtUsername_Leave(object sender, EventArgs e)
+        // UI Focus Effects
+        private void txtEmail_Enter(object sender, EventArgs e)
         {
-            panelUsernameUnderline.BackColor = Color.Gainsboro;
+            panelEmailUnderline.BackColor = focusColor;
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            panelEmailUnderline.BackColor = Color.Gainsboro;
         }
 
         private void txtPassword_Enter(object sender, EventArgs e)
@@ -125,15 +149,20 @@ namespace Attendance
             btnLogin.BackColor = primaryColor;
         }
 
+        // Toggle password visibility
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
+        }
 
-        private bool AuthenticateUser(string username, string password, out string role, out int userId)
+        private bool AuthenticateUser(string email, string password, out string role, out int userId)
         {
             role = null;
             userId = 0;
 
             using var context = new ApplicationDbContext();
 
-            var user = context.Users.FirstOrDefault(u => u.Username == username && u.IsActive);
+            var user = context.Users.FirstOrDefault(u => u.Email == email && u.IsActive);
 
             if (user != null && VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
             {
@@ -155,28 +184,28 @@ namespace Attendance
         private string MapRole(byte roleValue) =>
             roleValue switch
             {
-                0 => "Admin",
-                1 => "Teacher",
-                2 => "Student",
+                1 => "Admin",
+                2 => "Teacher",
+                3 => "Student",
                 _ => "Unknown"
             };
 
-        private void OpenRoleSpecificForm(string role, int userId, string username)
+        private void OpenRoleSpecificForm(string role, int userId, string email)
         {
             switch (role)
             {
                 case "Admin":
-                    MessageBox.Show($"Admin login successful!\nUser ID: {userId}", "Success",
+                    MessageBox.Show($"Admin login successful!\nEmail: {email}", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
 
                 case "Teacher":
-                    MessageBox.Show($"Teacher login successful!\nUser ID: {userId}", "Success",
+                    MessageBox.Show($"Teacher login successful!\nEmail: {email}", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
 
                 case "Student":
-                    MessageBox.Show($"Student login successful!\nUser ID: {userId}", "Success",
+                    MessageBox.Show($"Student login successful!\nEmail: {email}", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
 
