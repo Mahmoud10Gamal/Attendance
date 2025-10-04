@@ -93,35 +93,41 @@
             mainPanel.BackColor = Color.WhiteSmoke;
             mainPanel.Dock = DockStyle.Fill;
 
-            // Grid
-            dgvAttendance.Dock = DockStyle.Right;
-            dgvAttendance.Width = 550;
+            // Create a subpanel for filters
+            Panel filterPanel = new Panel();
+            filterPanel.Dock = DockStyle.Left;
+            filterPanel.Width = 300;
+            filterPanel.BackColor = Color.WhiteSmoke;
+
+            // Grid (fill remaining space)
+            dgvAttendance.Dock = DockStyle.Fill;
             dgvAttendance.BackgroundColor = Color.White;
+            dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             // Filters
             lblStudent.Text = "Student:";
             lblStudent.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblStudent.Location = new Point(30, 40);
             cmbStudents.Location = new Point(150, 38);
-            cmbStudents.Width = 150;
+            cmbStudents.Width = 120;
 
             lblStartDate.Text = "Start Date:";
             lblStartDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblStartDate.Location = new Point(30, 90);
             dtpStartDate.Location = new Point(150, 88);
-            dtpStartDate.Width = 150;
+            dtpStartDate.Width = 120;
 
             lblEndDate.Text = "End Date:";
             lblEndDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblEndDate.Location = new Point(30, 140);
             dtpEndDate.Location = new Point(150, 138);
-            dtpEndDate.Width = 150;
+            dtpEndDate.Width = 120;
 
             btnShowAttendance.Text = "Filter by Student";
             btnShowAttendance.BackColor = Color.FromArgb(41, 128, 185);
             btnShowAttendance.ForeColor = Color.White;
             btnShowAttendance.FlatStyle = FlatStyle.Flat;
-            btnShowAttendance.Location = new Point(70, 190);
+            btnShowAttendance.Location = new Point(60, 190);
             btnShowAttendance.Size = new Size(180, 35);
             btnShowAttendance.Click += btnShowAttendance_Click;
 
@@ -129,13 +135,13 @@
             lblClass.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblClass.Location = new Point(30, 270);
             cmbClasses.Location = new Point(150, 268);
-            cmbClasses.Width = 150;
+            cmbClasses.Width = 120;
 
             btnFilterByClass.Text = "Filter by Class";
             btnFilterByClass.BackColor = Color.FromArgb(41, 128, 185);
             btnFilterByClass.ForeColor = Color.White;
             btnFilterByClass.FlatStyle = FlatStyle.Flat;
-            btnFilterByClass.Location = new Point(70, 320);
+            btnFilterByClass.Location = new Point(60, 320);
             btnFilterByClass.Size = new Size(180, 35);
             btnFilterByClass.Click += btnFilterByClass_Click;
 
@@ -143,17 +149,24 @@
             btnExportPdf.BackColor = Color.FromArgb(39, 174, 96);
             btnExportPdf.ForeColor = Color.White;
             btnExportPdf.FlatStyle = FlatStyle.Flat;
-            btnExportPdf.Location = new Point(70, 380);
+            btnExportPdf.Location = new Point(60, 380);
             btnExportPdf.Size = new Size(180, 35);
             btnExportPdf.Click += btnExportPdf_Click;
 
-            // Add to main panel
-            mainPanel.Controls.AddRange(new Control[] {
-                dgvAttendance, lblStudent, cmbStudents,
-                lblStartDate, dtpStartDate, lblEndDate, dtpEndDate,
-                btnShowAttendance, lblClass, cmbClasses,
-                btnFilterByClass, btnExportPdf
+            // Add all filter controls to filterPanel
+            filterPanel.Controls.AddRange(new Control[] {
+                lblStudent, cmbStudents,
+                lblStartDate, dtpStartDate,
+                lblEndDate, dtpEndDate,
+                btnShowAttendance,
+                lblClass, cmbClasses,
+                btnFilterByClass,
+                btnExportPdf
             });
+
+            // Add to mainPanel
+            mainPanel.Controls.Add(dgvAttendance);
+            mainPanel.Controls.Add(filterPanel);
 
             // Form
             ClientSize = new Size(1000, 600);
