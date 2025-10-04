@@ -116,6 +116,7 @@ namespace Attendance
             chkRememberMe.TabIndex = 2;
             chkRememberMe.Text = "Remember Me";
             chkRememberMe.UseVisualStyleBackColor = true;
+            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
             // 
             // btnLogin
             // 
