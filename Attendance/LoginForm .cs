@@ -268,7 +268,11 @@ namespace Attendance
         private void lblRegister_Click(object sender, EventArgs e)
         {
             Register registerForm = new Register();
-            registerForm.ShowDialog(); 
+            //registerForm.ShowDialog();
+             this.Hide();
+            registerForm.ShowDialog();
+            this.Close();
+
         }
 
     }
