@@ -23,6 +23,7 @@ namespace Attendance.Registeration_Forms
             lblMessage.Text = "";
 
             string username = txtUsername.Text.Trim();
+            string email = TBRegEmail.Text.Trim();
             string password = txtPassword.Text;
             UserRole role;
 
@@ -53,7 +54,7 @@ namespace Attendance.Registeration_Forms
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 FullName = username,
-                Email = "", 
+                Email = email,
 
                 Role = role,
                 IsActive = true,
@@ -79,7 +80,7 @@ namespace Attendance.Registeration_Forms
 
                 this.Hide();
                 dashboard.ShowDialog();
-                this.Close(); 
+                this.Close();
 
             }
         }
@@ -88,6 +89,21 @@ namespace Attendance.Registeration_Forms
         {
             lblMessage.Text = message;
             lblMessage.ForeColor = color;
+        }
+
+        private void panelRegister_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
