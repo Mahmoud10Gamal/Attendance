@@ -20,36 +20,29 @@
 
         private void InitializeComponent()
         {
-            sidebar = new Panel();
-            btnLogout = new Button();
-            btnViewAttendance = new Button();
-            lblWelcome = new Label();
-            mainPanel = new Panel();
-            sidebar.SuspendLayout();
-            SuspendLayout();
+            this.sidebar = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnViewAttendance = new System.Windows.Forms.Button();
+            this.lblWelcome = new System.Windows.Forms.Label();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.sidebar.SuspendLayout();
+            this.SuspendLayout();
             // 
             // sidebar
             // 
-            sidebar.BackColor = Color.FromArgb(41, 128, 185);
-            sidebar.Controls.Add(btnLogout);
-            sidebar.Controls.Add(btnViewAttendance);
-            sidebar.Dock = DockStyle.Left;
-            sidebar.Location = new Point(0, 0);
-            sidebar.Name = "sidebar";
-            sidebar.Size = new Size(200, 473);
-            sidebar.TabIndex = 2;
+            this.sidebar.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
+            this.sidebar.Controls.Add(this.btnLogout);
+            this.sidebar.Controls.Add(this.btnViewAttendance);
+            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidebar.Width = 200;
             // 
             // btnLogout
             // 
-            btnLogout.Dock = DockStyle.Bottom;
-            btnLogout.FlatStyle = FlatStyle.Flat;
-            btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(0, 423);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(200, 50);
-            btnLogout.TabIndex = 0;
-            btnLogout.Text = "Logout";
-            btnLogout.Click += btnLogout_Click;
+            this.btnViewAttendance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnViewAttendance.Text = "View Attendance";
+            this.btnViewAttendance.Height = 50;
+            this.btnViewAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewAttendance.ForeColor = System.Drawing.Color.White;
             // 
             // btnViewAttendance
             // 
@@ -64,33 +57,27 @@
             // 
             // lblWelcome
             // 
-            lblWelcome.Dock = DockStyle.Top;
-            lblWelcome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            lblWelcome.Location = new Point(200, 0);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(329, 40);
-            lblWelcome.TabIndex = 1;
-            lblWelcome.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblWelcome.Height = 40;
+            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10, System.Drawing.FontStyle.Bold);
             // 
             // mainPanel
             // 
-            mainPanel.Dock = DockStyle.Fill;
-            mainPanel.Location = new Point(200, 40);
-            mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(329, 433);
-            mainPanel.TabIndex = 0;
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             // 
             // StudentDashboard
             // 
-            ClientSize = new Size(529, 473);
-            Controls.Add(mainPanel);
-            Controls.Add(lblWelcome);
-            Controls.Add(sidebar);
-            Name = "StudentDashboard";
-            Text = "Student Dashboard";
-            WindowState = FormWindowState.Maximized;
-            sidebar.ResumeLayout(false);
-            ResumeLayout(false);
+            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.lblWelcome);
+            this.Controls.Add(this.sidebar);
+            this.Text = "Student Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.sidebar.ResumeLayout(false);
+            this.ResumeLayout(false);
         }
+        private DataGridView dataGridView1;
+        private DateTimePicker dtStart;
+        private DateTimePicker dtEnd;
     }
 }
