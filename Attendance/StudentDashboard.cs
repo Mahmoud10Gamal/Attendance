@@ -21,10 +21,5 @@ namespace Attendance
             this.Close();
             Application.Restart();
         }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
