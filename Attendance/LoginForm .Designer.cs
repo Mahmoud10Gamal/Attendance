@@ -33,7 +33,6 @@ namespace Attendance
             panelLogin = new Panel();
             chkShowPassword = new CheckBox();
             lblMessage = new Label();
-            chkRememberMe = new CheckBox();
             btnLogin = new Button();
             panelPasswordUnderline = new Panel();
             txtPassword = new TextBox();
@@ -67,7 +66,6 @@ namespace Attendance
             // 
             panelLogin.Controls.Add(chkShowPassword);
             panelLogin.Controls.Add(lblMessage);
-            panelLogin.Controls.Add(chkRememberMe);
             panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(panelPasswordUnderline);
             panelLogin.Controls.Add(txtPassword);
@@ -86,7 +84,7 @@ namespace Attendance
             chkShowPassword.AutoSize = true;
             chkShowPassword.Font = new Font("Segoe UI", 9F);
             chkShowPassword.ForeColor = Color.DimGray;
-            chkShowPassword.Location = new Point(150, 175);
+            chkShowPassword.Location = new Point(0, 175); // ← Changed X to 0 (left-aligned)
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(132, 24);
             chkShowPassword.TabIndex = 3;
@@ -106,18 +104,7 @@ namespace Attendance
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // chkRememberMe
-            // 
-            chkRememberMe.AutoSize = true;
-            chkRememberMe.Font = new Font("Segoe UI", 9F);
-            chkRememberMe.ForeColor = Color.DimGray;
-            chkRememberMe.Location = new Point(3, 175);
-            chkRememberMe.Name = "chkRememberMe";
-            chkRememberMe.Size = new Size(129, 24);
-            chkRememberMe.TabIndex = 2;
-            chkRememberMe.Text = "Remember Me";
-            chkRememberMe.UseVisualStyleBackColor = true;
-            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
-            // 
+            
             // btnLogin
             // 
             btnLogin.BackColor = Color.FromArgb(41, 128, 185);
@@ -296,7 +283,6 @@ namespace Attendance
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.CheckBox chkRememberMe;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.CheckBox chkShowPassword;
         private Label lblRegister;
