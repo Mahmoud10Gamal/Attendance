@@ -21,7 +21,7 @@
         }
         private void btnClassSetting_Click(object sender, EventArgs e)
         {
-            ClassSetting classSettings = new ClassSetting(_userId);
+            ClassSetting classSettings = new ClassSetting();
             classSettings.ShowDialog();
         }
 

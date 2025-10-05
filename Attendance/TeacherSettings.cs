@@ -10,6 +10,10 @@ namespace Attendance
     {
         private readonly int _teacherId;
         private readonly string _email;
+        public TeacherSettings()
+        {
+            InitializeComponent();
+        }
 
         public TeacherSettings(int teacherId, string email)
         {

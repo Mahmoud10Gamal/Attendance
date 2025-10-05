@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-<<<<<<< HEAD
             TBClassID = new TextBox();
             label1 = new Label();
             dataGridView1 = new DataGridView();
@@ -78,6 +77,7 @@
             // 
             // textBox2
             // 
+            textBox2.HideSelection = false;
             textBox2.Location = new Point(134, 239);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(200, 23);
@@ -86,20 +86,20 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 160);
+            label2.Location = new Point(31, 160);
             label2.Name = "label2";
-            label2.Size = new Size(76, 15);
+            label2.Size = new Size(97, 15);
             label2.TabIndex = 5;
-            label2.Text = "Enter class ID";
+            label2.Text = "Enter class Name";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 242);
+            label3.Location = new Point(31, 242);
             label3.Name = "label3";
-            label3.Size = new Size(76, 15);
+            label3.Size = new Size(91, 15);
             label3.TabIndex = 6;
-            label3.Text = "Enter class ID";
+            label3.Text = "Enter Teacher ID";
             // 
             // BTNViewClass
             // 
@@ -119,6 +119,7 @@
             BTNDeleteClass.TabIndex = 8;
             BTNDeleteClass.Text = "Delete Class";
             BTNDeleteClass.UseVisualStyleBackColor = true;
+            BTNDeleteClass.Click += BTNDeleteClass_Click_1;
             // 
             // BTNEditClass
             // 
@@ -128,6 +129,7 @@
             BTNEditClass.TabIndex = 9;
             BTNEditClass.Text = "Edit Class";
             BTNEditClass.UseVisualStyleBackColor = true;
+            BTNEditClass.Click += BTNEditClass_Click_1;
             // 
             // BTNViewAll
             // 
@@ -157,21 +159,10 @@
             Controls.Add(TBClassID);
             Name = "ClassSetting";
             Text = "ClassSetting";
+            Load += ClassSetting_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
-=======
-            SuspendLayout();
-            // 
-            // ClassSetting
-            // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "ClassSetting";
-            Text = "Class Setting";
-            ResumeLayout(false);
->>>>>>> 242ca7816b496cc8061f1246b74d6794550a89e8
         }
 
         #endregion

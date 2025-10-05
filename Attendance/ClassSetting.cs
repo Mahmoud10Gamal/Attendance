@@ -7,49 +7,65 @@ namespace Attendance
 {
     public partial class ClassSetting : Form
     {
-<<<<<<< HEAD
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
         public ClassSetting()
-=======
-        public ClassSetting(int userId)
->>>>>>> 242ca7816b496cc8061f1246b74d6794550a89e8
         {
             InitializeComponent();
             _context = new ApplicationDbContext();
         }
 
-        // View All Classes
+        // Load form
+        private void ClassSetting_Load(object sender, EventArgs e)
+        {
+            BTNViewAll_Click(sender, e);
+        }
+
+        // === VIEW ALL CLASSES ===
         private void BTNViewAll_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = _context.Classes
-                                               .Select(c => new { c.ClassId, c.Name, c.Year, Teacher = c.Teacher.Name })
-                                               .ToList();
+                .Select(c => new
+                {
+                    c.ClassId,
+                    c.Name,
+                    c.Year,
+                    TeacherID = c.TeacherId
+                })
+                .ToList();
         }
 
-        // View a specific Class by ID
+        // === VIEW CLASS BY ID ===
         private void BTNViewClass_Click(object sender, EventArgs e)
         {
             if (int.TryParse(TBClassID.Text, out int classId))
             {
-                var cls = _context.Classes
-                                  .Where(c => c.ClassId == classId)
-                                  .Select(c => new { c.ClassId, c.Name, c.Year, Teacher = c.Teacher.Name })
-                                  .ToList();
+                var cls = _context.Classes.FirstOrDefault(c => c.ClassId == classId);
+                if (cls != null)
+                {
+                    // Show in grid
+                    dataGridView1.DataSource = new[]
+                    {
+                        new { cls.ClassId, cls.Name, cls.Year, cls.TeacherId }
+                    }.ToList();
 
-                if (cls.Any())
-                    dataGridView1.DataSource = cls;
+                    // Fill textboxes for editing
+                    textBox1.Text = cls.Name;
+                    textBox2.Text = cls.TeacherId.ToString();
+                }
                 else
+                {
                     MessageBox.Show("Class not found.");
+                }
             }
             else
             {
-                MessageBox.Show("Please enter a valid Class ID.");
+                MessageBox.Show("Please enter a valid numeric Class ID.");
             }
         }
 
-        // Delete a Class
-        private void BTNDeleteClass_Click(object sender, EventArgs e)
+        // === DELETE CLASS ===
+        private void BTNDeleteClass_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(TBClassID.Text, out int classId))
             {
@@ -59,7 +75,7 @@ namespace Attendance
                     _context.Classes.Remove(cls);
                     _context.SaveChanges();
                     MessageBox.Show("Class deleted successfully.");
-                    BTNViewAll_Click(sender, e); // Refresh
+                    BTNViewAll_Click(sender, e);
                 }
                 else
                 {
@@ -68,12 +84,12 @@ namespace Attendance
             }
             else
             {
-                MessageBox.Show("Enter a valid Class ID.");
+                MessageBox.Show("Please enter a valid numeric Class ID.");
             }
         }
 
-        // Edit Class (using textBox1 for Name, textBox2 for Year)
-        private void BTNEditClass_Click(object sender, EventArgs e)
+        // === EDIT / UPDATE CLASS ===
+        private void BTNEditClass_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(TBClassID.Text, out int classId))
             {
@@ -81,7 +97,11 @@ namespace Attendance
                 if (cls != null)
                 {
                     cls.Name = textBox1.Text;
-                    cls.Year = textBox2.Text;
+
+                    if (int.TryParse(textBox2.Text, out int teacherId))
+                    {
+                        cls.TeacherId = teacherId;
+                    }
 
                     _context.SaveChanges();
                     MessageBox.Show("Class updated successfully.");
@@ -94,7 +114,7 @@ namespace Attendance
             }
             else
             {
-                MessageBox.Show("Enter a valid Class ID.");
+                MessageBox.Show("Please enter a valid numeric Class ID.");
             }
         }
     }

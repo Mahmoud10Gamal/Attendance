@@ -49,12 +49,10 @@
             cmbClasses = new ComboBox();
             btnFilterByClass = new Button();
             btnExportPdf = new Button();
-
             sidebar.SuspendLayout();
             mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).BeginInit();
             SuspendLayout();
-
             // Sidebar
             sidebar.BackColor = Color.FromArgb(41, 128, 185);
             sidebar.Controls.Add(btnLogout);
@@ -62,67 +60,56 @@
             sidebar.Controls.Add(btnAttendance);
             sidebar.Dock = DockStyle.Left;
             sidebar.Size = new Size(200, 600);
-
             // Buttons
             btnAttendance.Dock = DockStyle.Top;
             btnAttendance.Text = "Attendance";
             btnAttendance.FlatStyle = FlatStyle.Flat;
             btnAttendance.ForeColor = Color.White;
             btnAttendance.Height = 50;
-
             btnReports.Dock = DockStyle.Top;
             btnReports.Text = "Reports";
             btnReports.FlatStyle = FlatStyle.Flat;
             btnReports.ForeColor = Color.White;
             btnReports.Height = 50;
-
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.Text = "Logout";
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = Color.White;
             btnLogout.Height = 50;
             btnLogout.Click += btnLogout_Click;
-
             // Header
             lblWelcome.Dock = DockStyle.Top;
             lblWelcome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblWelcome.TextAlign = ContentAlignment.MiddleCenter;
             lblWelcome.Height = 40;
-
             // Main panel
             mainPanel.BackColor = Color.WhiteSmoke;
             mainPanel.Dock = DockStyle.Fill;
-
             // Create a subpanel for filters
             Panel filterPanel = new Panel();
             filterPanel.Dock = DockStyle.Left;
             filterPanel.Width = 300;
             filterPanel.BackColor = Color.WhiteSmoke;
-
             // Grid (fill remaining space)
             dgvAttendance.Dock = DockStyle.Fill;
             dgvAttendance.BackgroundColor = Color.White;
             dgvAttendance.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
             // Filters
             lblStudent.Text = "Student:";
             lblStudent.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblStudent.Location = new Point(30, 40);
             cmbStudents.Location = new Point(150, 38);
             cmbStudents.Width = 120;
-
             lblStartDate.Text = "Start Date:";
             lblStartDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblStartDate.Location = new Point(30, 90);
             dtpStartDate.Location = new Point(150, 88);
             dtpStartDate.Width = 120;
-
             lblEndDate.Text = "End Date:";
             lblEndDate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblEndDate.Location = new Point(30, 140);
             dtpEndDate.Location = new Point(150, 138);
             dtpEndDate.Width = 120;
-
             btnShowAttendance.Text = "Filter by Student";
             btnShowAttendance.BackColor = Color.FromArgb(41, 128, 185);
             btnShowAttendance.ForeColor = Color.White;
@@ -130,13 +117,11 @@
             btnShowAttendance.Location = new Point(60, 190);
             btnShowAttendance.Size = new Size(180, 35);
             btnShowAttendance.Click += btnShowAttendance_Click;
-
             lblClass.Text = "Class:";
             lblClass.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblClass.Location = new Point(30, 270);
             cmbClasses.Location = new Point(150, 268);
             cmbClasses.Width = 120;
-
             btnFilterByClass.Text = "Filter by Class";
             btnFilterByClass.BackColor = Color.FromArgb(41, 128, 185);
             btnFilterByClass.ForeColor = Color.White;
@@ -144,7 +129,6 @@
             btnFilterByClass.Location = new Point(60, 320);
             btnFilterByClass.Size = new Size(180, 35);
             btnFilterByClass.Click += btnFilterByClass_Click;
-
             btnExportPdf.Text = "Export to PDF";
             btnExportPdf.BackColor = Color.FromArgb(39, 174, 96);
             btnExportPdf.ForeColor = Color.White;
@@ -152,22 +136,11 @@
             btnExportPdf.Location = new Point(60, 380);
             btnExportPdf.Size = new Size(180, 35);
             btnExportPdf.Click += btnExportPdf_Click;
-
             // Add all filter controls to filterPanel
-            filterPanel.Controls.AddRange(new Control[] {
-                lblStudent, cmbStudents,
-                lblStartDate, dtpStartDate,
-                lblEndDate, dtpEndDate,
-                btnShowAttendance,
-                lblClass, cmbClasses,
-                btnFilterByClass,
-                btnExportPdf
-            });
-
+            filterPanel.Controls.AddRange(new Control[] { lblStudent, cmbStudents, lblStartDate, dtpStartDate, lblEndDate, dtpEndDate, btnShowAttendance, lblClass, cmbClasses, btnFilterByClass, btnExportPdf });
             // Add to mainPanel
             mainPanel.Controls.Add(dgvAttendance);
             mainPanel.Controls.Add(filterPanel);
-
             // Form
             ClientSize = new Size(1000, 600);
             Controls.Add(mainPanel);
@@ -175,7 +148,6 @@
             Controls.Add(sidebar);
             Text = "Teacher Dashboard";
             WindowState = FormWindowState.Maximized;
-
             sidebar.ResumeLayout(false);
             mainPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAttendance).EndInit();

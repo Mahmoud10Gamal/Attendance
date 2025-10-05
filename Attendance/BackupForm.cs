@@ -1,6 +1,8 @@
 ﻿using Attendance.DataAcess;
 using Attendance.Model;
+using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Threading.Tasks;
@@ -12,6 +14,10 @@ namespace Attendance
     {
         private readonly int _userId;
 
+        public BackupForm()
+        {
+            InitializeComponent();
+        }
         public BackupForm(int userId)
         {
             InitializeComponent();
