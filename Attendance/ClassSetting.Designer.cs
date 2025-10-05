@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             TBClassID = new TextBox();
             label1 = new Label();
             dataGridView1 = new DataGridView();
@@ -159,6 +160,18 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
+=======
+            SuspendLayout();
+            // 
+            // ClassSetting
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Name = "ClassSetting";
+            Text = "Class Setting";
+            ResumeLayout(false);
+>>>>>>> 242ca7816b496cc8061f1246b74d6794550a89e8
         }
 
         #endregion

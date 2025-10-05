@@ -7,9 +7,13 @@ namespace Attendance
 {
     public partial class ClassSetting : Form
     {
+<<<<<<< HEAD
         private ApplicationDbContext _context;
 
         public ClassSetting()
+=======
+        public ClassSetting(int userId)
+>>>>>>> 242ca7816b496cc8061f1246b74d6794550a89e8
         {
             InitializeComponent();
             _context = new ApplicationDbContext();
