@@ -1,6 +1,6 @@
 ﻿namespace Attendance
 {
-    partial class ClassSetting
+    partial class ReportsSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // ClassSetting
+            // ReportsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Name = "ClassSetting";
-            Text = "Class Setting";
+            Name = "ReportsForm";
+            Text = "Reports Form";
             ResumeLayout(false);
         }
 

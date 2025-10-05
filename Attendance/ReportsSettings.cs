@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Attendance
 {
-    public partial class ClassSetting : Form
+    public partial class ReportsSettings : Form
     {
-        public ClassSetting(int userId)
+        public ReportsSettings()
         {
             InitializeComponent();
         }
