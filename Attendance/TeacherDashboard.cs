@@ -204,10 +204,5 @@ namespace Attendance
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void btnAttendance_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
