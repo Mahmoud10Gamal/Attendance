@@ -209,5 +209,10 @@ namespace Attendance
         {
 
         }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
