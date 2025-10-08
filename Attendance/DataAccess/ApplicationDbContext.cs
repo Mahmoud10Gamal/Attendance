@@ -22,7 +22,7 @@ namespace Attendance.DataAcess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             {
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=AttendanceSystem;Trusted_Connection=True;TrustServerCertificate=True;");
+                optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=AttendanceSystem;Trusted_Connection=True;TrustServerCertificate=True;");
             }
         }
 

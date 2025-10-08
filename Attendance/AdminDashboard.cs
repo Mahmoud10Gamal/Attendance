@@ -5,7 +5,10 @@
         private int _userId;
         private string _email;
 
-
+        public AdminDashboard()
+        {
+            InitializeComponent();
+        }
         public AdminDashboard(int userId, string email)
         {
             InitializeComponent();
@@ -39,8 +42,12 @@
 
         private void btnReportsSetting_Click(object sender, EventArgs e)
         {
-            ReportsSettings reportForm = new ReportsSettings();
-            reportForm.ShowDialog();
+            this.Hide();
+
+            // Create and show the TeacherDashboard form again
+            TeacherDashboard dashboard = new TeacherDashboard(_userId, _email);
+            dashboard.FormClosed += (s, args) => this.Show(); // Show again if needed after dashboard closes
+            dashboard.Show();
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
@@ -49,5 +56,9 @@
             backupForm.ShowDialog();
         }
 
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
