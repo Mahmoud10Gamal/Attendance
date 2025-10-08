@@ -217,11 +217,11 @@ namespace Attendance
 
             if (dashboard != null)
             {
-                this.Hide();  
+                this.Hide();
 
-                dashboard.ShowDialog(); 
+                dashboard.ShowDialog();
 
-                this.Show();  
+                this.Show();
 
             }
         }
@@ -269,10 +269,22 @@ namespace Attendance
         {
             Register registerForm = new Register();
             //registerForm.ShowDialog();
-             this.Hide();
+            this.Hide();
             registerForm.ShowDialog();
             this.Close();
 
+        }
+
+        private void chkRememberMe_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            Forget_Password forgetForm = new Forget_Password();
+            this.Hide();
+            forgetForm.ShowDialog();
+            this.Show();
         }
 
     }

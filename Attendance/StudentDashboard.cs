@@ -181,9 +181,12 @@ namespace Attendance
             Application.Restart();
         }
 
+
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             // مش محتاج حالياً، بس ممكن تستخدمه لتحديث مباشر لاحقاً
         }
+
+
     }
 }

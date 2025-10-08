@@ -4,13 +4,12 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel sidebar;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.Button btnClasses;
-        private System.Windows.Forms.Button btnReports;
+        private System.Windows.Forms.Button btnClassSetting;
+        private System.Windows.Forms.Button btnReportsSetting;
         private System.Windows.Forms.Button btnBackup;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Label lblWelcome;
+        private Button BTNTeatcherSetting;
+        private Button BTNStdSetting;
 
         protected override void Dispose(bool disposing)
         {
@@ -23,89 +22,119 @@
 
         private void InitializeComponent()
         {
-            this.sidebar = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
-            this.btnBackup = new System.Windows.Forms.Button();
-            this.btnReports = new System.Windows.Forms.Button();
-            this.btnClasses = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.lblWelcome = new System.Windows.Forms.Label();
-            this.mainPanel = new System.Windows.Forms.Panel();
-            this.sidebar.SuspendLayout();
-            this.SuspendLayout();
+            sidebar = new Panel();
+            BTNTeatcherSetting = new Button();
+            BTNStdSetting = new Button();
+            btnLogout = new Button();
+            btnBackup = new Button();
+            btnReportsSetting = new Button();
+            btnClassSetting = new Button();
+            sidebar.SuspendLayout();
+            SuspendLayout();
             // 
             // sidebar
             // 
-            this.sidebar.BackColor = System.Drawing.Color.FromArgb(41, 128, 185);
-            this.sidebar.Controls.Add(this.btnLogout);
-            this.sidebar.Controls.Add(this.btnBackup);
-            this.sidebar.Controls.Add(this.btnReports);
-            this.sidebar.Controls.Add(this.btnClasses);
-            this.sidebar.Controls.Add(this.btnUsers);
-            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.Width = 200;
+            sidebar.BackColor = Color.FromArgb(41, 128, 185);
+            sidebar.Controls.Add(BTNTeatcherSetting);
+            sidebar.Controls.Add(BTNStdSetting);
+            sidebar.Controls.Add(btnLogout);
+            sidebar.Controls.Add(btnBackup);
+            sidebar.Controls.Add(btnReportsSetting);
+            sidebar.Controls.Add(btnClassSetting);
+            sidebar.Dock = DockStyle.Left;
+            sidebar.Location = new Point(0, 0);
+            sidebar.Name = "sidebar";
+            sidebar.Size = new Size(200, 367);
+            sidebar.TabIndex = 2;
             // 
-            // btnUsers
+            // BTNTeatcherSetting
             // 
-            this.btnUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsers.Text = "Users";
-            this.btnUsers.Height = 50;
-            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsers.ForeColor = System.Drawing.Color.White;
+            BTNTeatcherSetting.Dock = DockStyle.Top;
+            BTNTeatcherSetting.FlatStyle = FlatStyle.Flat;
+            BTNTeatcherSetting.ForeColor = Color.White;
+            BTNTeatcherSetting.Location = new Point(0, 200);
+            BTNTeatcherSetting.Name = "BTNTeatcherSetting";
+            BTNTeatcherSetting.Size = new Size(200, 50);
+            BTNTeatcherSetting.TabIndex = 5;
+            BTNTeatcherSetting.Text = "Teachers  Setting";
+            BTNTeatcherSetting.Click += BTNTeatcherSetting_Click; 
+
             // 
-            // btnClasses
+            // BTNStdSetting
             // 
-            this.btnClasses.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnClasses.Text = "Classes";
-            this.btnClasses.Height = 50;
-            this.btnClasses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClasses.ForeColor = System.Drawing.Color.White;
-            // 
-            // btnReports
-            // 
-            this.btnReports.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReports.Text = "Reports";
-            this.btnReports.Height = 50;
-            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReports.ForeColor = System.Drawing.Color.White;
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBackup.Text = "Backup";
-            this.btnBackup.Height = 50;
-            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            BTNStdSetting.Dock = DockStyle.Top;
+            BTNStdSetting.FlatStyle = FlatStyle.Flat;
+            BTNStdSetting.ForeColor = Color.White;
+            BTNStdSetting.Location = new Point(0, 150);
+            BTNStdSetting.Name = "BTNStdSetting";
+            BTNStdSetting.Size = new Size(200, 50);
+            BTNStdSetting.TabIndex = 4;
+            BTNStdSetting.Text = "Students  Setting";
+            BTNStdSetting.Click += BTNStdSetting_Click; 
+
             // 
             // btnLogout
             // 
-            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.Height = 50;
-            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            btnLogout.Dock = DockStyle.Bottom;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(0, 317);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(200, 50);
+            btnLogout.TabIndex = 0;
+            btnLogout.Text = "Logout";
+            btnLogout.Click += btnLogout_Click; 
+
             // 
-            // lblWelcome
+            // btnBackup
             // 
-            this.lblWelcome.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWelcome.Height = 40;
-            this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10, System.Drawing.FontStyle.Bold);
+            btnBackup.Dock = DockStyle.Top;
+            btnBackup.FlatStyle = FlatStyle.Flat;
+            btnBackup.ForeColor = Color.White;
+            btnBackup.Location = new Point(0, 100);
+            btnBackup.Name = "btnBackup";
+            btnBackup.Size = new Size(200, 50);
+            btnBackup.TabIndex = 1;
+            btnBackup.Text = "Backup";
+            btnBackup.Click += btnBackup_Click;
+                      
+
+            // btnReportsSetting
             // 
-            // mainPanel
+            btnReportsSetting.Dock = DockStyle.Top;
+            btnReportsSetting.FlatStyle = FlatStyle.Flat;
+            btnReportsSetting.ForeColor = Color.White;
+            btnReportsSetting.Location = new Point(0, 50);
+            btnReportsSetting.Name = "btnReportsSetting";
+            btnReportsSetting.Size = new Size(200, 50);
+            btnReportsSetting.TabIndex = 2;
+            btnReportsSetting.Text = "Generate Reports";
+            btnReportsSetting.Click += btnReportsSetting_Click; 
+
             // 
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            // btnClassSetting
             // 
+            btnClassSetting.Dock = DockStyle.Top;
+            btnClassSetting.FlatStyle = FlatStyle.Flat;
+            btnClassSetting.ForeColor = Color.White;
+            btnClassSetting.Location = new Point(0, 0);
+            btnClassSetting.Name = "btnClassSetting";
+            btnClassSetting.Size = new Size(200, 50);
+            btnClassSetting.TabIndex = 3;
+            btnClassSetting.Text = "Classes  Setting";
+            btnClassSetting.Click += btnClassSetting_Click; 
             // AdminDashboard
             // 
-            this.Controls.Add(this.mainPanel);
-            this.Controls.Add(this.lblWelcome);
-            this.Controls.Add(this.sidebar);
-            this.Text = "Admin Dashboard";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.sidebar.ResumeLayout(false);
-            this.ResumeLayout(false);
+            ClientSize = new Size(917, 367);
+            Controls.Add(sidebar);
+            MaximumSize = new Size(935, 414);
+            MinimumSize = new Size(935, 414);
+            Name = "AdminDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Admin Dashboard";
+            WindowState = FormWindowState.Maximized;
+            sidebar.ResumeLayout(false);
+            ResumeLayout(false);
         }
     }
 }

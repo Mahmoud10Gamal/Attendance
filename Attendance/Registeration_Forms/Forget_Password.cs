@@ -1,24 +1,19 @@
 ﻿using Attendance.DataAcess;
+using Attendance.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Attendance.Registeration_Forms
 {
     public partial class Forget_Password : Form
     {
-        private Form Form1;
-
         public Forget_Password()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void rest_password(object sender, EventArgs e)
@@ -28,31 +23,32 @@ namespace Attendance.Registeration_Forms
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(newPassword))
             {
-                MessageBox.Show("Username and new password are required.");
+                MessageBox.Show("Please enter both username and new password.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            using (var db = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
-                var user = db.Users.FirstOrDefault(u => u.Username == username);
+                var user = context.Users.FirstOrDefault(u => u.Username == username);
+
                 if (user == null)
                 {
-                    MessageBox.Show("User not found.");
+                    MessageBox.Show("No user found with that username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Hash the new password
+                // Hash the new password securely
                 using var hmac = new HMACSHA512();
                 user.PasswordSalt = hmac.Key;
                 user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(newPassword));
 
-                db.Users.Update(user);
-                db.SaveChanges();
+                context.Users.Update(user);
+                context.SaveChanges();
+
+                MessageBox.Show("Password has been reset successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            MessageBox.Show("Password reset successfully.");
-            this.Close();            // close Register form
-            Form1.Show();
+            this.Close();
         }
     }
 }

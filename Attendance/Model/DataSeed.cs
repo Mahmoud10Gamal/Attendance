@@ -34,7 +34,7 @@ namespace Attendance.Model
                 // ========== 2. Teacher User + Teacher ==========
                 PasswordHelper.CreatePasswordHash("Teacher@122", out var teacherHash, out var teacherSalt);
                 var teacherUser = new User
-                {
+                {    //email:teacher1@school.com     pass:Teacher@123
                     Username = "teacher2",
                     PasswordHash = teacherHash,
                     PasswordSalt = teacherSalt,
