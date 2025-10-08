@@ -279,5 +279,13 @@ namespace Attendance
         {
 
         }
+        private void btnForgotPassword_Click(object sender, EventArgs e)
+        {
+            Forget_Password forgetForm = new Forget_Password();
+            this.Hide();
+            forgetForm.ShowDialog();
+            this.Show();
+        }
+
     }
 }

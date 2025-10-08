@@ -28,78 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblTitle = new Label();
+            lblUser = new Label();
             TBRestUN = new TextBox();
-            label1 = new Label();
+            lblPass = new Label();
             TBRestPas = new TextBox();
-            label2 = new Label();
             BTNRest = new Button();
             SuspendLayout();
             // 
+            // lblTitle
+            // 
+            lblTitle.Dock = DockStyle.Top;
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(41, 128, 185);
+            lblTitle.Location = new Point(0, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(450, 60);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Reset Your Password";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblUser
+            // 
+            lblUser.AutoSize = true;
+            lblUser.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblUser.Location = new Point(40, 100);
+            lblUser.Name = "lblUser";
+            lblUser.Size = new Size(111, 28);
+            lblUser.TabIndex = 1;
+            lblUser.Text = "Username:";
+            // 
             // TBRestUN
             // 
-            TBRestUN.Font = new Font("Segoe UI Historic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TBRestUN.Location = new Point(192, 93);
+            TBRestUN.Font = new Font("Segoe UI", 12F);
+            TBRestUN.Location = new Point(201, 97);
             TBRestUN.Name = "TBRestUN";
-            TBRestUN.Size = new Size(175, 35);
-            TBRestUN.TabIndex = 3;
+            TBRestUN.Size = new Size(237, 34);
+            TBRestUN.TabIndex = 2;
             // 
-            // label1
+            // lblPass
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Historic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 93);
-            label1.Name = "label1";
-            label1.Size = new Size(125, 30);
-            label1.TabIndex = 2;
-            label1.Text = "User Name";
+            lblPass.AutoSize = true;
+            lblPass.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblPass.Location = new Point(40, 160);
+            lblPass.Name = "lblPass";
+            lblPass.Size = new Size(155, 28);
+            lblPass.TabIndex = 3;
+            lblPass.Text = "New Password:";
             // 
             // TBRestPas
             // 
-            TBRestPas.Font = new Font("Segoe UI Historic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            TBRestPas.Location = new Point(192, 185);
+            TBRestPas.Font = new Font("Segoe UI", 12F);
+            TBRestPas.Location = new Point(201, 154);
             TBRestPas.Name = "TBRestPas";
-            TBRestPas.Size = new Size(175, 35);
-            TBRestPas.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Historic", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(8, 188);
-            label2.Name = "label2";
-            label2.Size = new Size(160, 30);
-            label2.TabIndex = 4;
-            label2.Text = "New Password";
+            TBRestPas.Size = new Size(237, 34);
+            TBRestPas.TabIndex = 4;
+            TBRestPas.UseSystemPasswordChar = true;
             // 
             // BTNRest
             // 
-            BTNRest.Font = new Font("Segoe UI Historic", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BTNRest.Location = new Point(107, 304);
+            BTNRest.BackColor = Color.FromArgb(41, 128, 185);
+            BTNRest.FlatStyle = FlatStyle.Flat;
+            BTNRest.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            BTNRest.ForeColor = Color.White;
+            BTNRest.Location = new Point(130, 250);
             BTNRest.Name = "BTNRest";
-            BTNRest.Size = new Size(127, 44);
-            BTNRest.TabIndex = 6;
-            BTNRest.Text = "Rest";
-            BTNRest.UseVisualStyleBackColor = true;
+            BTNRest.Size = new Size(180, 40);
+            BTNRest.TabIndex = 5;
+            BTNRest.Text = "Reset Password";
+            BTNRest.UseVisualStyleBackColor = false;
             BTNRest.Click += rest_password;
             // 
             // Forget_Password
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(404, 411);
-            Controls.Add(BTNRest);
-            Controls.Add(TBRestPas);
-            Controls.Add(label2);
+            BackColor = Color.WhiteSmoke;
+            ClientSize = new Size(450, 400);
+            Controls.Add(lblTitle);
+            Controls.Add(lblUser);
             Controls.Add(TBRestUN);
-            Controls.Add(label1);
-            MaximumSize = new Size(420, 450);
-            MinimumSize = new Size(420, 450);
+            Controls.Add(lblPass);
+            Controls.Add(TBRestPas);
+            Controls.Add(BTNRest);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "Forget_Password";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Forget Password";
+            Text = "Reset Password";
             ResumeLayout(false);
             PerformLayout();
         }
+
 
         #endregion
 
@@ -108,5 +125,8 @@
         private TextBox TBRestPas;
         private Label label2;
         private Button BTNRest;
+        private Label lblTitle;
+        private Label lblUser;
+        private Label lblPass;
     }
 }
