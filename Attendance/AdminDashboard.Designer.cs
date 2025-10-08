@@ -44,7 +44,7 @@
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(200, 375);
+            sidebar.Size = new Size(200, 450);
             sidebar.TabIndex = 2;
             // 
             // BTNTeatcherSetting
@@ -76,7 +76,7 @@
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(0, 325);
+            btnLogout.Location = new Point(0, 400);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(200, 50);
             btnLogout.TabIndex = 0;
@@ -121,14 +121,13 @@
             // 
             // AdminDashboard
             // 
-            ClientSize = new Size(919, 375);
+            ClientSize = new Size(420, 450);
             Controls.Add(sidebar);
-            MaximumSize = new Size(935, 414);
-            MinimumSize = new Size(935, 414);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
-            WindowState = FormWindowState.Maximized;
             Load += AdminDashboard_Load;
             sidebar.ResumeLayout(false);
             ResumeLayout(false);
