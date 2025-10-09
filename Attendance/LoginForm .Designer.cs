@@ -1,5 +1,4 @@
-﻿
-namespace Attendance
+﻿namespace Attendance
 {
     partial class login
     {
@@ -23,17 +22,12 @@ namespace Attendance
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             panelMain = new Panel();
             panelLogin = new Panel();
             chkShowPassword = new CheckBox();
             lblMessage = new Label();
-            chkRememberMe = new CheckBox();
             btnLogin = new Button();
             panelPasswordUnderline = new Panel();
             txtPassword = new TextBox();
@@ -42,6 +36,7 @@ namespace Attendance
             txtEmail = new TextBox();
             lblEmail = new Label();
             lblRegister = new Label();
+            btnForgotPassword = new Button();
             panelHeader = new Panel();
             lblSubtitle = new Label();
             lblTitle = new Label();
@@ -67,7 +62,6 @@ namespace Attendance
             // 
             panelLogin.Controls.Add(chkShowPassword);
             panelLogin.Controls.Add(lblMessage);
-            panelLogin.Controls.Add(chkRememberMe);
             panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(panelPasswordUnderline);
             panelLogin.Controls.Add(txtPassword);
@@ -76,6 +70,7 @@ namespace Attendance
             panelLogin.Controls.Add(txtEmail);
             panelLogin.Controls.Add(lblEmail);
             panelLogin.Controls.Add(lblRegister);
+            panelLogin.Controls.Add(btnForgotPassword);
             panelLogin.Location = new Point(60, 240);
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(360, 340);
@@ -86,7 +81,7 @@ namespace Attendance
             chkShowPassword.AutoSize = true;
             chkShowPassword.Font = new Font("Segoe UI", 9F);
             chkShowPassword.ForeColor = Color.DimGray;
-            chkShowPassword.Location = new Point(150, 175);
+            chkShowPassword.Location = new Point(0, 175);
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(132, 24);
             chkShowPassword.TabIndex = 3;
@@ -104,19 +99,6 @@ namespace Attendance
             lblMessage.Size = new Size(360, 40);
             lblMessage.TabIndex = 8;
             lblMessage.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // chkRememberMe
-            // 
-            chkRememberMe.AutoSize = true;
-            chkRememberMe.Font = new Font("Segoe UI", 9F);
-            chkRememberMe.ForeColor = Color.DimGray;
-            chkRememberMe.Location = new Point(3, 175);
-            chkRememberMe.Name = "chkRememberMe";
-            chkRememberMe.Size = new Size(129, 24);
-            chkRememberMe.TabIndex = 2;
-            chkRememberMe.Text = "Remember Me";
-            chkRememberMe.UseVisualStyleBackColor = true;
-            chkRememberMe.CheckedChanged += chkRememberMe_CheckedChanged;
             // 
             // btnLogin
             // 
@@ -207,12 +189,30 @@ namespace Attendance
             lblRegister.Cursor = Cursors.Hand;
             lblRegister.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
             lblRegister.ForeColor = Color.RoyalBlue;
-            lblRegister.Location = new Point(120, 270);
+            lblRegister.Location = new Point(238, 275);
             lblRegister.Name = "lblRegister";
             lblRegister.Size = new Size(119, 20);
             lblRegister.TabIndex = 5;
             lblRegister.Text = "Or Register Here";
             lblRegister.Click += lblRegister_Click;
+            // 
+            // btnForgotPassword
+            // 
+            btnForgotPassword.BackColor = Color.Transparent;
+            btnForgotPassword.Cursor = Cursors.Hand;
+            btnForgotPassword.FlatAppearance.BorderSize = 0;
+            btnForgotPassword.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btnForgotPassword.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btnForgotPassword.FlatStyle = FlatStyle.Flat;
+            btnForgotPassword.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            btnForgotPassword.ForeColor = Color.RoyalBlue;
+            btnForgotPassword.Location = new Point(0, 270);
+            btnForgotPassword.Name = "btnForgotPassword";
+            btnForgotPassword.Size = new Size(150, 30);
+            btnForgotPassword.TabIndex = 9;
+            btnForgotPassword.Text = "Forgot Password?";
+            btnForgotPassword.UseVisualStyleBackColor = false;
+            btnForgotPassword.Click += btnForgotPassword_Click;
             // 
             // panelHeader
             // 
@@ -296,9 +296,9 @@ namespace Attendance
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.CheckBox chkRememberMe;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.CheckBox chkShowPassword;
         private Label lblRegister;
+        private Button btnForgotPassword;
     }
 }

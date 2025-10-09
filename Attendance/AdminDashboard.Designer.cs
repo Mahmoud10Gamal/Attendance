@@ -44,7 +44,7 @@
             sidebar.Dock = DockStyle.Left;
             sidebar.Location = new Point(0, 0);
             sidebar.Name = "sidebar";
-            sidebar.Size = new Size(200, 367);
+            sidebar.Size = new Size(200, 450);
             sidebar.TabIndex = 2;
             // 
             // BTNTeatcherSetting
@@ -57,8 +57,7 @@
             BTNTeatcherSetting.Size = new Size(200, 50);
             BTNTeatcherSetting.TabIndex = 5;
             BTNTeatcherSetting.Text = "Teachers  Setting";
-            BTNTeatcherSetting.Click += BTNTeatcherSetting_Click; 
-
+            BTNTeatcherSetting.Click += BTNTeatcherSetting_Click;
             // 
             // BTNStdSetting
             // 
@@ -70,21 +69,19 @@
             BTNStdSetting.Size = new Size(200, 50);
             BTNStdSetting.TabIndex = 4;
             BTNStdSetting.Text = "Students  Setting";
-            BTNStdSetting.Click += BTNStdSetting_Click; 
-
+            BTNStdSetting.Click += BTNStdSetting_Click;
             // 
             // btnLogout
             // 
             btnLogout.Dock = DockStyle.Bottom;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(0, 317);
+            btnLogout.Location = new Point(0, 400);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(200, 50);
             btnLogout.TabIndex = 0;
             btnLogout.Text = "Logout";
-            btnLogout.Click += btnLogout_Click; 
-
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnBackup
             // 
@@ -97,8 +94,7 @@
             btnBackup.TabIndex = 1;
             btnBackup.Text = "Backup";
             btnBackup.Click += btnBackup_Click;
-                      
-
+            // 
             // btnReportsSetting
             // 
             btnReportsSetting.Dock = DockStyle.Top;
@@ -109,8 +105,7 @@
             btnReportsSetting.Size = new Size(200, 50);
             btnReportsSetting.TabIndex = 2;
             btnReportsSetting.Text = "Generate Reports";
-            btnReportsSetting.Click += btnReportsSetting_Click; 
-
+            btnReportsSetting.Click += btnReportsSetting_Click;
             // 
             // btnClassSetting
             // 
@@ -122,17 +117,18 @@
             btnClassSetting.Size = new Size(200, 50);
             btnClassSetting.TabIndex = 3;
             btnClassSetting.Text = "Classes  Setting";
-            btnClassSetting.Click += btnClassSetting_Click; 
+            btnClassSetting.Click += btnClassSetting_Click;
+            // 
             // AdminDashboard
             // 
-            ClientSize = new Size(917, 367);
+            ClientSize = new Size(420, 450);
             Controls.Add(sidebar);
-            MaximumSize = new Size(935, 414);
-            MinimumSize = new Size(935, 414);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "AdminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
-            WindowState = FormWindowState.Maximized;
+            Load += AdminDashboard_Load;
             sidebar.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -204,5 +204,23 @@ namespace Attendance
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnAttendance_Click(object sender, EventArgs e)
+        {
+            // Hide the current dashboard
+            this.Hide();
+
+            // Create the attendance form and show it
+            Teacher_attentance attendanceForm = new Teacher_attentance(_userId, _email);
+            attendanceForm.FormClosed += (s, args) => this.Show(); // Re-show dashboard when attendance form closes
+            attendanceForm.Show();
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+            TeacherDashboard dashboard = new TeacherDashboard(_userId, _email);
+            dashboard.Show();
+            this.Hide();
+        }
     }
 }

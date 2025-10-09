@@ -20,7 +20,7 @@ namespace Attendance.Registeration_Forms
 
         private void register_New_User(object sender, EventArgs e)
         {
-            lblMessage.Text = "";
+             lblMessage.Text = "";
 
             string username = txtUsername.Text.Trim();
             string email = TBRegEmail.Text.Trim();
@@ -60,7 +60,21 @@ namespace Attendance.Registeration_Forms
                 IsActive = true,
                 CreatedAt = DateTime.Now
             };
-
+            if (role== UserRole.Teacher)
+            {
+                user.Teacher = new Teacher
+                {
+                    EmployeeNumber = username
+     
+                };
+            }
+            else if (role == UserRole.Student)
+            {
+                user.Student = new Student
+                {
+                    StudentNumber = username
+                };
+            }
             using (var db = new ApplicationDbContext())
             {
                 db.Users.Add(user);

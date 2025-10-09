@@ -7,7 +7,14 @@ namespace Attendance
         private int _userId;
         private string _email;
 
+
         ApplicationDbContext db = new ApplicationDbContext();
+
+
+        public AdminDashboard()
+        {
+            InitializeComponent();
+        }
 
         public AdminDashboard(int userId, string email)
         {
@@ -25,7 +32,7 @@ namespace Attendance
         }
         private void btnClassSetting_Click(object sender, EventArgs e)
         {
-            ClassSetting classSettings = new ClassSetting(_userId);
+            ClassSetting classSettings = new ClassSetting();
             classSettings.ShowDialog();
         }
 
@@ -61,8 +68,12 @@ namespace Attendance
 
         private void btnReportsSetting_Click(object sender, EventArgs e)
         {
-            ReportsSettings reportForm = new ReportsSettings();
-            reportForm.ShowDialog();
+            this.Hide();
+
+            // Create and show the TeacherDashboard form again
+            TeacherDashboard dashboard = new TeacherDashboard(_userId, _email);
+            dashboard.FormClosed += (s, args) => this.Show(); // Show again if needed after dashboard closes
+            dashboard.Show();
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
@@ -71,5 +82,9 @@ namespace Attendance
             backupForm.ShowDialog();
         }
 
+        private void AdminDashboard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Attendance.DataAcess;
 using Attendance.Model;
+using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Data.SqlClient;
 
 
@@ -15,6 +17,10 @@ namespace Attendance
     {
         private readonly int _userId;
 
+        public BackupForm()
+        {
+            InitializeComponent();
+        }
         public BackupForm(int userId)
         {
             InitializeComponent();
@@ -35,7 +41,8 @@ namespace Attendance
             }
         }
 
-        [Obsolete]
+        
+
         private async void btnBackup_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBackupPath.Text))
@@ -66,10 +73,10 @@ namespace Attendance
                     _ => throw new InvalidOperationException("Unsupported backup type")
                 };
 
-                await using var conn = new SqlConnection(connectionString);
+                await using var conn = new System.Data.SqlClient.SqlConnection(connectionString);
                 await conn.OpenAsync();
 
-                await using var cmd = new SqlCommand(sql, conn);
+                await using var cmd = new System.Data.SqlClient.SqlCommand(sql, conn);
                 await cmd.ExecuteNonQueryAsync();
 
 
