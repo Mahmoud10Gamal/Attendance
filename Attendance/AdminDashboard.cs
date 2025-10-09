@@ -96,14 +96,9 @@ namespace Attendance
 
         private void btnReportsSetting_Click(object sender, EventArgs e)
         {
-            if (_currentUser == null)
-            {
-                MessageBox.Show("User not found.");
-                return;
-            }
-
-            var reportForm = new ReportsSettings(_userId, _email, _currentUser.Role.ToString());
-            reportForm.ShowDialog();
+            TeacherDashboard dashboard = new TeacherDashboard(_userId, _email);
+            dashboard.Show();
+            this.Hide();
         }
 
 

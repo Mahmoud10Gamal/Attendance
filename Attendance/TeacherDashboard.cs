@@ -214,6 +214,8 @@ namespace Attendance
             Teacher_attentance attendanceForm = new Teacher_attentance(_userId, _email);
             attendanceForm.FormClosed += (s, args) => this.Show(); // Re-show dashboard when attendance form closes
             attendanceForm.Show();
+            this.Hide();
+
         }
 
         private void btnReports_Click(object sender, EventArgs e)
