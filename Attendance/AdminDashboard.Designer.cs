@@ -105,7 +105,7 @@
             btnReportsSetting.Size = new Size(200, 50);
             btnReportsSetting.TabIndex = 2;
             btnReportsSetting.Text = "Generate Reports";
-            btnReportsSetting.Click += btnReportsSetting_Click;
+            //btnReportsSetting.Click += btnReportsSetting_Click;
             // 
             // btnClassSetting
             // 

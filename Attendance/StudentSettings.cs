@@ -11,10 +11,12 @@ namespace Attendance
     {
         private readonly int _studentId;
         private readonly string _email;
+
         public StudentSettings()
         {
             InitializeComponent();
         }
+
         public StudentSettings(int studentId, string email)
         {
             InitializeComponent();
@@ -24,10 +26,15 @@ namespace Attendance
 
         private void StudentSettings_Load(object sender, EventArgs e)
         {
-
             lblMessage.Text = $"Welcome, {_email}";
             dtpStartDate.Value = DateTime.Today.AddDays(-7);
             dtpEndDate.Value = DateTime.Today;
+
+            if (_studentId == 0)
+            {
+                lblMessage.ForeColor = Color.DodgerBlue;
+                lblMessage.Text = "Admin Mode - viewing all students' attendance.";
+            }
         }
 
         private void btnLoadAttendance_Click(object sender, EventArgs e)
@@ -50,30 +57,47 @@ namespace Attendance
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var attendanceRecords = db.AttendanceRecords
-    .Include(a => a.Class)  
-    .Where(a => a.StudentId == _studentId &&
-                a.AttendanceDate >= dtpStartDate.Value &&
-                a.AttendanceDate <= dtpEndDate.Value)
-    .Select(a => new
-    {
-        Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
-        Class = a.Class.Name,
-        Status = a.Status.ToString(),
-        Remarks = a.Remarks
-    })
-    .OrderBy(a => a.Date)
-    .ToList();
+                    var attendanceQuery = db.AttendanceRecords
+                        .Include(a => a.Student)
+                        .ThenInclude(s => s.User)
+                        .Include(a => a.Class)
+                        .Where(a => a.AttendanceDate >= dtpStartDate.Value &&
+                                    a.AttendanceDate <= dtpEndDate.Value);
 
-                    
+                    if (_studentId != 0)
+                        attendanceQuery = attendanceQuery.Where(a => a.StudentId == _studentId);
+                    else
+                        lblMessage.Text = "Admin Mode - Showing all students' records.";
+
+                    var attendanceRecords = attendanceQuery
+                        .Select(a => new
+                        {
+                            a.AttendanceDate,
+                            Student = a.Student.User.FullName,
+                            Class = a.Class.Name,
+                            a.Status,
+                            a.Remarks
+                        })
+                        .OrderBy(a => a.AttendanceDate)
+                        .ToList()
+                        .Select(a => new
+                        {
+                            Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
+                            a.Student,
+                            a.Class,
+                            Status = a.Status.ToString(),
+                            a.Remarks
+                        })
+                        .ToList();
+
 
                     dgvAttendance.DataSource = attendanceRecords;
 
                     lblCount.Text = $"Total Records: {attendanceRecords.Count}";
                     lblMessage.ForeColor = Color.FromArgb(39, 174, 96);
                     lblMessage.Text = attendanceRecords.Count > 0
-                        ? " Attendance loaded successfully."
-                        : " No records found in the selected range.";
+                        ? "Attendance loaded successfully."
+                        : "No records found in the selected range.";
                 }
             }
             catch (Exception ex)
