@@ -73,10 +73,10 @@ namespace Attendance
                     _ => throw new InvalidOperationException("Unsupported backup type")
                 };
 
-                await using var conn = new System.Data.SqlClient.SqlConnection(connectionString);
+                await using var conn = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
                 await conn.OpenAsync();
 
-                await using var cmd = new System.Data.SqlClient.SqlCommand(sql, conn);
+                await using var cmd = new Microsoft.Data.SqlClient.SqlCommand(sql, conn);
                 await cmd.ExecuteNonQueryAsync();
 
 

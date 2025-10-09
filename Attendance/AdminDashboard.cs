@@ -1,4 +1,5 @@
 ﻿using Attendance.DataAcess;
+using Attendance.Model;
 
 namespace Attendance
 {
@@ -6,10 +7,9 @@ namespace Attendance
     {
         private int _userId;
         private string _email;
+        private User? _currentUser;
 
-
-        ApplicationDbContext db = new ApplicationDbContext();
-
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         public AdminDashboard()
         {
@@ -21,15 +21,17 @@ namespace Attendance
             InitializeComponent();
             _userId = userId;
             _email = email;
-            //lblWelcome.Text = $"Welcome, Admin {email}";
+
+            // نجيب المستخدم الحالي من الداتا
+            _currentUser = db.Users.FirstOrDefault(u => u.UserId == _userId);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-
             this.Close();
             Application.Restart();
         }
+
         private void btnClassSetting_Click(object sender, EventArgs e)
         {
             ClassSetting classSettings = new ClassSetting();
@@ -38,43 +40,65 @@ namespace Attendance
 
         private void BTNStdSetting_Click(object sender, EventArgs e)
         {
-            var student= db.Students.FirstOrDefault(s=>s.UserId==_userId);
+            if (_currentUser == null)
+            {
+                MessageBox.Show("User not found.");
+                return;
+            }
+
+            if (_currentUser.Role == UserRole.Admin)
+            {
+                // Admin mode: open StudentSettings for all students
+                var stdForm = new StudentSettings(0, _email); // 0 = Admin Mode
+                stdForm.ShowDialog();
+                return;
+            }
+
+            var student = db.Students.FirstOrDefault(s => s.UserId == _userId);
             if (student != null)
             {
-                var stdForm=new StudentSettings(student.StudentId, _email);
+                var stdForm = new StudentSettings(student.StudentId, _email);
                 stdForm.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Student record not found.");
             }
-
         }
 
         private void BTNTeatcherSetting_Click(object sender, EventArgs e)
         {
+            if (_currentUser == null)
+            {
+                MessageBox.Show("User not found.");
+                return;
+            }
+
+            if (_currentUser.Role == UserRole.Admin)
+            {
+                // Admin mode: open TeacherSettings for all teachers
+                var teacherForm = new TeacherSettings(0, _email); // 0 = Admin Mode
+                teacherForm.ShowDialog();
+                return;
+            }
+
             var teacher = db.Teachers.FirstOrDefault(t => t.UserId == _userId);
             if (teacher != null)
             {
-                TeacherSettings teacherForm = new TeacherSettings(teacher.TeacherId,_email);
+                TeacherSettings teacherForm = new TeacherSettings(teacher.TeacherId, _email);
                 teacherForm.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Teacher record not found.");
             }
-
         }
 
-        private void btnReportsSetting_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            // Create and show the TeacherDashboard form again
-            TeacherDashboard dashboard = new TeacherDashboard(_userId, _email);
-            dashboard.FormClosed += (s, args) => this.Show(); // Show again if needed after dashboard closes
-            dashboard.Show();
-        }
+        //private void btnReportsSetting_Click(object sender, EventArgs e)
+        //{
+        //    ReportsSettings reportForm = new ReportsSettings();
+        //    reportForm.ShowDialog();
+        //}
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
@@ -84,7 +108,7 @@ namespace Attendance
 
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
-
+           
         }
     }
 }

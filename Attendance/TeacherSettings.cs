@@ -11,6 +11,7 @@ namespace Attendance
     {
         private readonly int _teacherId;
         private readonly string _email;
+
         public TeacherSettings()
         {
             InitializeComponent();
@@ -38,14 +39,31 @@ namespace Attendance
             {
                 using (var db = new ApplicationDbContext())
                 {
-                    var teacherClasses = db.Classes
-                        .Where(c => c.TeacherId == _teacherId)
-                        .Select(c => new { c.ClassId, c.Name })
-                        .ToList();
+                    if (_teacherId == 0)
+                    {
 
-                    cmbClasses.DataSource = teacherClasses;
-                    cmbClasses.DisplayMember = "Name";
-                    cmbClasses.ValueMember = "ClassId";
+                        var allClasses = db.Classes
+                            .Select(c => new { c.ClassId, c.Name })
+                            .ToList();
+
+                        cmbClasses.DataSource = allClasses;
+                        cmbClasses.DisplayMember = "Name";
+                        cmbClasses.ValueMember = "ClassId";
+                        lblMessage.ForeColor = Color.DodgerBlue;
+                        lblMessage.Text = "Admin Mode: viewing all classes.";
+                    }
+                    else
+                    {
+
+                        var teacherClasses = db.Classes
+                            .Where(c => c.TeacherId == _teacherId)
+                            .Select(c => new { c.ClassId, c.Name })
+                            .ToList();
+
+                        cmbClasses.DataSource = teacherClasses;
+                        cmbClasses.DisplayMember = "Name";
+                        cmbClasses.ValueMember = "ClassId";
+                    }
                 }
             }
             catch (Exception ex)
@@ -84,21 +102,37 @@ namespace Attendance
 
                 using (var db = new ApplicationDbContext())
                 {
-                    var attendanceRecords = db.AttendanceRecords
-                        .Include(a=>a.Student)
-                        .ThenInclude(s=>s.User)
-                        .Where(a => a.ClassId == selectedClassId &&
-                                    a.AttendanceDate >= dtpStartDate.Value &&
-                                    a.AttendanceDate <= dtpEndDate.Value)
-                        .Select(a => new
-                        {
-                            Student = a.Student.User.FullName,
-                            Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
-                            Status = a.Status.ToString(),
-                            Remarks = a.Remarks
-                        })
-                        .OrderBy(a => a.Date)
-                        .ToList();
+                    var attendanceQuery = db.AttendanceRecords
+                        .Include(a => a.Student)
+                        .ThenInclude(s => s.User)
+                        .Where(a => a.AttendanceDate >= dtpStartDate.Value &&
+                                    a.AttendanceDate <= dtpEndDate.Value);
+
+                    if (_teacherId != 0)
+                        attendanceQuery = attendanceQuery.Where(a => a.Class.TeacherId == _teacherId);
+                    else
+                        lblMessage.Text = "Admin Mode - Showing all attendance records.";
+
+                    attendanceQuery = attendanceQuery.Where(a => a.ClassId == selectedClassId);
+
+                    var attendanceRecords = attendanceQuery
+                       .Select(a => new
+                       {
+                           a.AttendanceDate,
+                           Student = a.Student.User.FullName,
+                           a.Status,
+                           a.Remarks
+                       })
+                       .OrderBy(a => a.AttendanceDate)
+                       .ToList()
+                       .Select(a => new
+                       {
+                           Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
+                           a.Student,
+                           Status = a.Status.ToString(),
+                           a.Remarks
+                       })
+                       .ToList();
 
                     dgvAttendance.DataSource = attendanceRecords;
                     lblCount.Text = $"Total Records: {attendanceRecords.Count}";
