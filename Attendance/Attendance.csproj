@@ -22,7 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="8.2.0" />
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
+    <PackageReference Include="LiveCharts.Core" Version="0.9.8" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
 
     
@@ -37,6 +39,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="15.0.4795.1001" />
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 

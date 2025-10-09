@@ -94,11 +94,18 @@ namespace Attendance
             }
         }
 
-        //private void btnReportsSetting_Click(object sender, EventArgs e)
-        //{
-        //    ReportsSettings reportForm = new ReportsSettings();
-        //    reportForm.ShowDialog();
-        //}
+        private void btnReportsSetting_Click(object sender, EventArgs e)
+        {
+            if (_currentUser == null)
+            {
+                MessageBox.Show("User not found.");
+                return;
+            }
+
+            var reportForm = new ReportsSettings(_userId, _email, _currentUser.Role.ToString());
+            reportForm.ShowDialog();
+        }
+
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
