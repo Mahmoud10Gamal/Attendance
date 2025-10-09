@@ -1,4 +1,5 @@
 ﻿using Attendance.DataAcess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace Attendance
                         .ToList();
 
                     cmbClasses.DataSource = teacherClasses;
-                    cmbClasses.DisplayMember = "ClassName";
+                    cmbClasses.DisplayMember = "Name";
                     cmbClasses.ValueMember = "ClassId";
                 }
             }
@@ -80,6 +81,8 @@ namespace Attendance
                 using (var db = new ApplicationDbContext())
                 {
                     var attendanceRecords = db.AttendanceRecords
+                        .Include(a=>a.Student)
+                        .ThenInclude(s=>s.User)
                         .Where(a => a.ClassId == selectedClassId &&
                                     a.AttendanceDate >= dtpStartDate.Value &&
                                     a.AttendanceDate <= dtpEndDate.Value)

@@ -1,4 +1,5 @@
 ﻿using Attendance.DataAcess;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -47,18 +48,21 @@ namespace Attendance
                 using (var db = new ApplicationDbContext())
                 {
                     var attendanceRecords = db.AttendanceRecords
-                        .Where(a => a.StudentId == _studentId &&
-                                    a.AttendanceDate >= dtpStartDate.Value &&
-                                    a.AttendanceDate <= dtpEndDate.Value)
-                        .Select(a => new
-                        {
-                            Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
-                            Class = a.Class.Name,
-                            Status = a.Status.ToString(),
-                            Remarks = a.Remarks
-                        })
-                        .OrderBy(a => a.Date)
-                        .ToList();
+    .Include(a => a.Class)  
+    .Where(a => a.StudentId == _studentId &&
+                a.AttendanceDate >= dtpStartDate.Value &&
+                a.AttendanceDate <= dtpEndDate.Value)
+    .Select(a => new
+    {
+        Date = a.AttendanceDate.ToString("yyyy-MM-dd"),
+        Class = a.Class.Name,
+        Status = a.Status.ToString(),
+        Remarks = a.Remarks
+    })
+    .OrderBy(a => a.Date)
+    .ToList();
+
+                    
 
                     dgvAttendance.DataSource = attendanceRecords;
 

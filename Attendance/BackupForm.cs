@@ -2,6 +2,9 @@
 using Attendance.Model;
 using System;
 using System.Data.SqlClient;
+
+
+
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,6 +35,7 @@ namespace Attendance
             }
         }
 
+        [Obsolete]
         private async void btnBackup_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBackupPath.Text))
@@ -62,14 +66,12 @@ namespace Attendance
                     _ => throw new InvalidOperationException("Unsupported backup type")
                 };
 
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    await conn.OpenAsync();
-                    using (SqlCommand cmd = new SqlCommand(sql, conn))
-                    {
-                        await cmd.ExecuteNonQueryAsync();
-                    }
-                }
+                await using var conn = new SqlConnection(connectionString);
+                await conn.OpenAsync();
+
+                await using var cmd = new SqlCommand(sql, conn);
+                await cmd.ExecuteNonQueryAsync();
+
 
                 progressBar.Value = 80;
                 long sizeBytes = new FileInfo(backupFile).Length;
